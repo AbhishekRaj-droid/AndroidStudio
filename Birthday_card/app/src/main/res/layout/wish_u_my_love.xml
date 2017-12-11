@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/android_rose"
+        android:scaleType="centerCrop"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/quotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Some Say love is valley of fire, but with you it seems like this flower."
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:fontFamily="cursive"
+            android:layout_weight="0"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:paddingTop="230dp"
+            android:text="Happy Birthday"
+            android:textSize="40dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:text="Naam mein kya rkha hai"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
