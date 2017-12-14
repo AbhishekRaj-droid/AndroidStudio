@@ -24,6 +24,8 @@ public class MainActivity1 extends AppCompatActivity {
 
 
     int numberofcoffees=3;
+    int cnt = 1;
+    String[] messages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,20 @@ public class MainActivity1 extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int x = numberofcoffees * 5;
-        String pricemessage = "Total is " + x + "\nThank you!";
+        String one = "Amount due " + "$" + x;
+        String two = "That would be " + "$" + x + " please";
+        String three = "you owe " + x + "bucks, dude!";
+        String four = x + "dollars for " + numberofcoffees + " cups of coffee. Pay up.";
+        String five = "Total = " + "$" + x;
+        messages = new String[]{one, two, three, four, five};
         display(numberofcoffees);
-        displayMessage(pricemessage);
-
+        displayMessage(messages[cnt-1]);
+        if (cnt % 5 == 0) {
+            cnt = 1;
+        }
+        else {
+            cnt += 1;
+        }
     }
 
     /**
