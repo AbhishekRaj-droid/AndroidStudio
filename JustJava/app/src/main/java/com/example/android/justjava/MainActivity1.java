@@ -49,12 +49,12 @@ public class MainActivity1 extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void increment(View view) {
+    public void increment(View view) {
         numberofcoffees += 1;
         displayquantity(numberofcoffees);
     }
 
-    private void decrement(View view) {
+    public void decrement(View view) {
         numberofcoffees -= 1;
         displayquantity(numberofcoffees);
     }
