@@ -10,10 +10,13 @@ package com.example.android.justjava;
 
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -25,7 +28,7 @@ public class MainActivity1 extends AppCompatActivity {
 
 
     int numberofcoffees=3;
-    int cnt = 1;
+    int cnt = 2;
     String first = "Abhishek";
     String last = "Raj";
     int price;
@@ -39,7 +42,8 @@ public class MainActivity1 extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String name = displayname(first, last);
+        //String name = displayname(first, last);
+        String name = extracttext();
         displayquantity(numberofcoffees);
         boolean hascream = haswhippedcream();
         boolean chocolate = havechocolate();
@@ -57,8 +61,10 @@ public class MainActivity1 extends AppCompatActivity {
         String greetingmessage = "\nThank you!";
         String whippedcream = "\nAdded Whipped cream ? ";
         String chocomessage = "\nAdd Chocolate? ";
+        String message = name + quantitymessage + whippedcream + hascream + chocomessage + chocolate + quantitymessage + pricemessage + greetingmessage;
         displayMessage(name,  quantitymessage , pricemessage , greetingmessage, whippedcream, hascream, chocomessage, chocolate);
-
+        //String email[] = {""};
+        //composeEmail(email, "order summary", message);
     }
 
     /**
@@ -66,11 +72,18 @@ public class MainActivity1 extends AppCompatActivity {
      */
     public void increment(View view) {
         numberofcoffees += 1;
+
+        if (numberofcoffees > 100) {
+            numberofcoffees = 100;
+        }
         displayquantity(numberofcoffees);
     }
 
     public void decrement(View view) {
         numberofcoffees -= 1;
+        if (numberofcoffees < 1) {
+            numberofcoffees = 1;
+        }
         displayquantity(numberofcoffees);
     }
     private void displayquantity(int number) {
@@ -103,5 +116,21 @@ public class MainActivity1 extends AppCompatActivity {
     private boolean havechocolate() {
         CheckBox havechoc = (CheckBox)findViewById(R.id.checkbox_chocolate);
         return havechoc.isChecked();
+    }
+
+    private String extracttext() {
+        EditText text = (EditText)findViewById(R.id.name);
+        return text.getText().toString();
+    }
+
+    public void composeEmail(String[] addresses, String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
